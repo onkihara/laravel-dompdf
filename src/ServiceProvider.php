@@ -29,7 +29,7 @@ class ServiceProvider extends IlluminateServiceProvider {
     {
         $configPath = __DIR__ . '/../config/dompdf.php';
         $this->publishes([$configPath => config_path('dompdf.php')], 'config');
-        
+
         $defines = $this->app['config']->get('dompdf.defines') ?: array();
         foreach ($defines as $key => $value) {
             $this->define($key, $value);
@@ -41,18 +41,18 @@ class ServiceProvider extends IlluminateServiceProvider {
         $this->define("DOMPDF_CHROOT", $this->app['path.base']);
         $this->define("DOMPDF_LOG_OUTPUT_FILE", $this->app['path.storage'] . '/logs/dompdf.html');
 
-        $config_file = $this->app['config']->get(
-            'dompdf.config_file'
-        ) ?: $this->app['path.base'] . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
+        // $config_file = $this->app['config']->get(
+        //     'dompdf.config_file'
+        // ) ?: $this->app['path.base'] . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
 
-        if (file_exists($config_file)) {
-            require_once $config_file;
-        } else {
-            throw new Exception(
-                "$config_file cannot be loaded, please configure correct config file (dompdf.config_file)"
-            );
-        }
-        
+        // if (file_exists($config_file)) {
+        //     require_once $config_file;
+        // } else {
+        //     // throw new Exception(
+        //     //     "$config_file cannot be loaded, please configure correct config file (dompdf.config_file)"
+        //     // );
+        // }
+
         $this->app->bind('dompdf', function ($app) {
                 return new PDF($app['config'], $app['files'], $app['view'], $app['path.public']);
             });
@@ -67,10 +67,10 @@ class ServiceProvider extends IlluminateServiceProvider {
     {
         return array('dompdf');
     }
-   
+
     /**
      * Define a value, if not already defined
-     * 
+     *
      * @param string $name
      * @param string $value
      */

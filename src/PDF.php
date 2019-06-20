@@ -2,6 +2,7 @@
 namespace Barryvdh\DomPDF;
 
 use Exception;
+use Dompdf\Dompdf;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Response;
@@ -56,8 +57,14 @@ class PDF{
 
         $this->orientation = $this->config->get('dompdf.orientation') ?: 'portrait';
 
-        $this->dompdf = new \DOMPDF();
+        $this->dompdf = new Dompdf();
         $this->dompdf->set_base_path(realpath($publicPath));
+    }
+
+    public function setOption($optionname,$optionvalue)
+    {
+        $this->dompdf->set_option($optionname,$optionvalue);
+        return $this;
     }
 
     /**
