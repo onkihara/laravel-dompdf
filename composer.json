@@ -1,5 +1,5 @@
 {
-    "name": "onkihara/laravel-dompdf",
+    "name": "barryvdh/laravel-dompdf",
     "description": "A DOMPDF Wrapper for Laravel",
     "license": "MIT",
     "keywords": ["laravel", "dompdf", "pdf"],
@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "5.0.x|5.1.x|5.4.x",
+        "illuminate/support": "5.0.x|5.1.x",
         "dompdf/dompdf": "0.6.*"
     },
 
