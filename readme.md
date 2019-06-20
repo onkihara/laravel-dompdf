@@ -1,8 +1,10 @@
 ## DOMPDF Wrapper for Laravel 5
 
+Tried to make available vor laravel 5.4.36 by onkihara
+
 Require this package in your composer.json and update composer. This will download the package and the dompdf + fontlib libraries also.
 
-    "barryvdh/laravel-dompdf": "0.5.*"
+    "onkihara/laravel-dompdf": "0.5.*"
 
 After updating composer, add the ServiceProvider to the providers array in app/config/app.php
 
